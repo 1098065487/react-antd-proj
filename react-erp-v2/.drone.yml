@@ -1,0 +1,108 @@
+kind: pipeline
+name: default
+
+steps:
+  - name: submodules
+    image: alpine/git
+    volumes:
+      - name: ssh-key
+        path: /root/.ssh/id_rsa
+    commands:
+      - echo 'StrictHostKeyChecking no' >> /etc/ssh/ssh_config
+      - git submodule update --init --recursive --remote
+    when:
+      branch:
+        - master
+        - develop
+
+  - name: config
+    image: bash
+    commands:
+      - |
+        if [[ $DRONE_BRANCH = "master" ]]; then
+            sed -i 's/api.erp.local/106.14.180.99:443/g' src/defaultSettings.js
+        else
+            sed -i 's/api.erp.local/erpv2-api.leading.cn/g' src/defaultSettings.js
+        fi
+    when:
+      branch:
+        - master
+        - develop
+
+  - name: build
+    image: node
+    volumes:
+      - name: nodejs-data
+        path: /drone/src/node_modules
+    commands:
+      - npm config set registry http://registry.npm.taobao.org/
+      - npm config set chromedriver_cdnurl http://npm.taobao.org/mirrors/chromedriver
+      - npm config set puppeteer_download_host http://npm.taobao.org/mirrors
+      - npm install
+      - npm run build
+    when:
+      branch:
+        - master
+        - develop
+
+  - name: deploy
+    image: composer
+    volumes:
+      - name: composer-data
+        path: /tmp
+      - name: ssh-key
+        path: /root/.ssh/id_rsa
+    commands:
+      - set -ex
+      - sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/' /etc/apk/repositories
+      - composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
+      - composer require deployer/deployer deployer/recipes
+      - apk add rsync
+      - |
+        if [[ $DRONE_BRANCH = "master" ]]; then
+            stage=prod
+        else
+            stage=dev
+        fi
+        ./vendor/bin/dep deploy $stage
+    when:
+      branch:
+        - master
+        - develop
+
+  - name: notify
+    image: lddsb/drone-dingtalk-message
+    settings:
+      success_token:
+        from_secret: success_dingtalk_token
+      failure_token:
+        from_secret: failure_dingtalk_token
+      lang: zh_CN
+      msg_type: markdown
+      msg_at_all: false
+    commands:
+      - |
+        if [ $DRONE_BUILD_STATUS = "success" ]; then
+            export PLUGIN_ACCESS_TOKEN=$PLUGIN_SUCCESS_TOKEN
+        else
+            export PLUGIN_ACCESS_TOKEN=$PLUGIN_FAILURE_TOKEN
+        fi
+      - /bin/drone-dingtalk
+    when:
+      status:
+        - success
+        - failure
+      branch:
+        - master
+        - develop
+
+volumes:
+  - name: nodejs-data
+    host:
+      path: /home/service/storage/devops/nodejs/erp
+  - name: composer-data
+    host:
+      path: /home/service/storage/devops/composer
+  - name: ssh-key
+    host:
+      path: /home/service/storage/devops/deploy/.ssh/deployer.id_rsa

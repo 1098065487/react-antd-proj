@@ -1,0 +1,71 @@
+develop:
+  project: react
+  hosts:
+    develop:
+      ip: 192.168.1.220
+      port: 22
+      user: admin
+      identity_file: ~/.ssh/id_rsa
+  config:
+    debug: true
+    from: ./dist/
+    keep_releases: 5
+    deploy_path: /var/www/html/cpa/frontend
+    rsync:
+      timeout: 300
+      exclude:
+        - .env
+        - .git
+      exclude_from:
+      include:
+      include_from:
+      delete: false
+    share:
+      dirs:
+      files:
+    writable:
+      mode: acl
+      recursive: true
+      dirs:
+      files:
+    remove:
+      dirs:
+      files:
+    docker:
+      container: nginx
+
+production:
+  project: react
+  hosts:
+    develop:
+      ip: 54.219.185.72
+      port: 22
+      user: ubuntu
+      identity_file: ~/.ssh/production_id_rsa
+  config:
+    debug: true
+    from: ./dist/
+    keep_releases: 5
+    deploy_path: /var/www/html/cpa/frontend
+    rsync:
+      timeout: 300
+      exclude:
+        - .env
+        - .git
+      exclude_from:
+      include:
+      include_from:
+      delete: false
+    share:
+      dirs:
+      files:
+    writable:
+      mode: acl
+      recursive: true
+      dirs:
+      files:
+    remove:
+      dirs:
+      files:
+    docker:
+      container: nginx

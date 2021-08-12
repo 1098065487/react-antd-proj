@@ -1,0 +1,129 @@
+@import '~antd/lib/style/themes/default.less';
+
+.modal {
+  padding: 0 40px;
+
+  .title {
+    margin-bottom: 10px;
+    font-size: 14px;
+    text-align: center;
+
+    span {
+      font-weight: bold;
+      font-size: 16px;
+    }
+  }
+
+  .file_download {
+    display: block;
+    color: #1890ff;
+    text-align: center;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .modal_divider {
+    margin: 16px 0;
+  }
+
+  .button {
+    display: block;
+    width: 200px;
+    margin: 10px auto 0;
+  }
+
+  .result {
+    width: 100%;
+    height: 160px;
+    font-size: 16px;
+    line-height: 160px;
+    text-align: center;
+  }
+}
+
+.result_content {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+
+  .chart {
+    position: relative;
+    width: 50%;
+
+    .annotation {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      padding-top: 10px;
+      text-align: center;
+      transform: translate(-50%, -50%);
+
+      h3 {
+        margin: 0;
+        font-weight: normal;
+        font-size: 16px;
+      }
+
+      p {
+        margin: 10px 0;
+        font-weight: bold;
+        font-size: 18px;
+      }
+    }
+  }
+
+  .legend {
+    position: relative;
+    display: block;
+    width: 42%;
+    margin: 0 3% 0 5%;
+    padding: 0;
+
+    ul {
+      margin: 0;
+      padding: 0;
+
+      li {
+        margin-bottom: 10px;
+
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+
+        .dot {
+          display: inline-block;
+          width: 8px;
+          height: 8px;
+          margin-right: 8px;
+          border-radius: 4px;
+        }
+
+        .legendTitle {
+          color: @text-color;
+        }
+
+        .percent {
+          color: @text-color-secondary;
+        }
+
+        .value {
+          position: absolute;
+          right: 0;
+        }
+      }
+    }
+
+    .error_download {
+      display: block;
+      margin: 10px 0 0 0;
+    }
+  }
+}
+
+.file_none {
+  color: rgba(0, 0, 0, 0.25);
+}

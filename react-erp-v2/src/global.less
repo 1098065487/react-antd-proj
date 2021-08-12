@@ -1,0 +1,132 @@
+@import '~antd/lib/style/themes/default.less';
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+p {
+  margin: 0;
+}
+
+.colorWeak {
+  filter: invert(80%);
+}
+
+.ant-layout {
+  min-height: 100vh;
+}
+
+canvas {
+  display: block;
+}
+
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.globalSpin {
+  width: 100%;
+  margin: 40px 0 !important;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+.image-checked {
+  :global {
+    .ant-checkbox-wrapper {
+      img {
+        padding: 4px;
+      }
+    }
+
+    .ant-checkbox-wrapper-checked {
+      img {
+        border: 2px solid #40a9ff;
+      }
+    }
+
+    .ant-checkbox {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: @screen-xs) {
+  .ant-table {
+    width: 100%;
+    overflow-x: auto;
+
+    &-thead > tr,
+    &-tbody > tr {
+      > th,
+      > td {
+        white-space: pre;
+
+        > span {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+.searchForm {
+  background: @layout-body-background;
+  padding: 20px 20px 0 20px;
+  margin-bottom: 20px;
+
+  :global {
+    .ant-form-item {
+      display: flex;
+      margin-right: 0;
+      margin-bottom: 24px;
+
+      > .ant-form-item-label {
+        width: auto;
+        padding-right: 8px;
+        line-height: 32px;
+      }
+
+      .ant-form-item-control {
+        line-height: 32px;
+      }
+    }
+
+    .ant-form-item-control-wrapper {
+      flex: 1;
+    }
+  }
+
+  .submitButtons {
+    display: block;
+    margin-bottom: 24px;
+    white-space: nowrap;
+  }
+}
+
+.noMarginTable {
+  :global {
+    .ant-table-small > .ant-table-content > .ant-table-body {
+      margin: 0;
+    }
+  }
+}
+
+@media screen and (max-width: @screen-lg) {
+  .searchForm :global(.ant-form-item) {
+    margin-right: 24px;
+  }
+}
+
+@media screen and (max-width: @screen-md) {
+  .searchForm :global(.ant-form-item) {
+    margin-right: 8px;
+  }
+}

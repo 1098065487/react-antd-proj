@@ -1,0 +1,113 @@
+.header {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #ccc;
+}
+.selectPage {
+  width: 120px;
+  height: 34px;
+  margin-right: 10px;
+  font-size: 12px;
+  background-color: #edeff0;
+  border: 1px solid var(--select-bd);
+  border-radius: 4px;
+  &:hover {
+    background-color: var(--hover-dark-bgc);
+  }
+  > div {
+    height: 34px !important;
+    border-radius: 4px !important;
+  }
+}
+.selectOption {
+  font-weight: 400;
+  font-size: 12px;
+}
+.searchBox {
+  display: flex;
+  height: 34px;
+  overflow: hidden;
+  background-color: white;
+  border: 1px solid var(--select-bd);
+  border-right: 0;
+  border-radius: 4px 0 0 4px;
+  .selectSearch {
+    width: 100px;
+    font-size: 12px;
+    border-left: 1px solid var(--select-bd);
+    &:hover {
+      background-color: #edeff0;
+    }
+  }
+  .searchInput {
+    width: 200px;
+    font-size: 12px;
+    &::placeholder {
+      font-size: 12px;
+    }
+  }
+}
+button.startSearch {
+  height: 34px;
+  margin-right: 10px;
+  color: white;
+  font-size: 12px;
+  background-color: var(--menu-checked-bgc);
+  border-color: var(--menu-checked-bgc);
+  border-radius: 0 4px 4px 0;
+  &:active,
+  &:focus {
+    background: var(--menu-checked-bgc);
+    border-color: var(--menu-checked-bgc);
+  }
+  &:hover {
+    background-color: #b24019;
+    border-color: #b24019;
+  }
+}
+.overview {
+  margin-bottom: 0;
+  font-weight: 500;
+  font-size: 22px;
+}
+.addAsin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  color: #fff;
+  font-size: 18px;
+  background-color: #73868b;
+  border: none;
+  border-radius: 4px;
+  outline: transparent;
+  cursor: pointer;
+  &:hover {
+    background-color: #4f5c60;
+  }
+}
+.overviewRadio {
+  display: flex;
+  height: 26px;
+}
+.rightbox,
+.leftbox {
+  width: 50%;
+}
+.leftbox {
+  width: calc(50% - 10px);
+  margin-right: 10px;
+}
+:global {
+  .ant-btn.ant-btn-primary.okButton {
+    background-color: var(--menu-checked-bgc);
+    border-color: var(--menu-checked-bgc);
+    &:hover {
+      background-color: #b24019;
+      border-color: #b24019;
+    }
+  }
+}

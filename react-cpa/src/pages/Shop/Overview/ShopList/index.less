@@ -1,0 +1,18 @@
+.thumbnail {
+  position: relative;
+  cursor: pointer;
+  .bigImg {
+    position: absolute;
+    top: 0;
+    left: 100px;
+    z-index: 10;
+    display: none;
+    max-width: 140px;
+    max-height: 140px;
+  }
+  &:hover {
+    .bigImg {
+      display: block;
+    }
+  }
+}

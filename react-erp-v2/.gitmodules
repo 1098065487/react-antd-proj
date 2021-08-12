@@ -1,0 +1,3 @@
+[submodule "deployer"]
+	path = deployer
+	url = git@git.leading.io:leadingtech/deployer-recipe.git

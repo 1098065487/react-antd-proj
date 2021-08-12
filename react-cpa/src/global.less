@@ -1,0 +1,241 @@
+@import '~antd/es/style/themes/default.less';
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+.colorWeak {
+  filter: invert(80%);
+}
+
+.ant-layout {
+  min-height: 100vh;
+}
+
+canvas {
+  display: block;
+}
+
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+p {
+  margin-bottom: 0;
+}
+
+@media (max-width: @screen-xs) {
+  .ant-table {
+    width: 100%;
+    overflow-x: auto;
+    &-thead > tr,
+    &-tbody > tr {
+      > th,
+      > td {
+        white-space: pre;
+        > span {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+// 兼容IE11
+@media screen and(-ms-high-contrast: active), (-ms-high-contrast: none) {
+  body .ant-design-pro > .ant-layout {
+    min-height: 100vh;
+  }
+}
+
+div.container___2XU-J {
+  margin: 0;
+}
+
+// 颜色定义
+:root {
+  --font-color: rgba(0, 0, 0, 0.85);
+  --header-bgc: #2f3439;
+  --select-bd: rgb(153, 170, 175);
+  --hover-light-bgc: rgba(166, 176, 179, 0.2);
+  --hover-dark-bgc: #dbdfe1;
+  --checked-bd: #2b94e1;
+  --checked-bgc: rgba(43, 148, 225, 0.2);
+  --menu-checked-bgc: #d2562c;
+  --statistics-info-color: #0071bc;
+  --up-bgc: rgba(79, 174, 51, 0.15);
+  --up-color: #4fae33;
+  --down-bgc: rgba(210, 86, 44, 0.15);
+  --down-color: #d2562c;
+}
+
+label.ant-radio-button-wrapper {
+  display: flex;
+  align-items: center;
+  height: 26px;
+  font-size: 12px;
+  &:hover {
+    color: var(--font-color);
+    background: var(--hover-light-bgc);
+  }
+  &:first-of-type {
+    border-radius: 4px 0 0 4px;
+  }
+  &:last-of-type {
+    border-radius: 0 4px 4px 0;
+  }
+}
+label.ant-radio-button-wrapper-checked {
+  color: var(--font-color) !important;
+  background: var(--checked-bgc) !important;
+  border-color: var(--checked-bd) !important;
+}
+
+.ant-table-thead {
+  font-size: 14px;
+}
+
+.ant-table-tbody {
+  font-size: 12px;
+}
+
+.ant-pro-global-footer {
+  margin: 20px 0;
+}
+
+tbody.ant-table-tbody {
+  > tr.ant-table-row {
+    &:hover {
+      background-color: #e6f7ff;
+      > td {
+        background-color: #e6f7ff;
+      }
+    }
+  }
+}
+
+// header
+.ant-pro-global-header-layout-mix {
+  background-color: var(--header-bgc);
+}
+// 左侧menu
+.ant-layout-sider {
+  padding-top: 40px !important;
+  background-color: #eee;
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+  // menu列表
+  .ant-menu {
+    // 被选中的menu item 设置选中背景色以及字体颜色
+    li.ant-menu-item.ant-menu-item-selected {
+      background-color: var(--menu-checked-bgc);
+      // menu里的是span标签
+      span.ant-pro-menu-item-title {
+        color: white;
+      }
+    }
+    // 设置mune item整体大小以及悬浮时背景色和文字样式
+    .ant-menu-item,
+    .ant-menu-submenu-title {
+      height: auto;
+      margin: 0;
+      margin-bottom: 0;
+      padding: 13px 16px 13px 12px;
+      line-height: 1;
+
+      // border-top: 1px solid #d5d9da;
+      &:hover {
+        background-color: #daddde;
+        .ant-pro-menu-item {
+          color: #757575;
+        }
+      }
+      // &:first-of-type {
+      //   border-top: 0;
+      // }
+      .ant-pro-menu-item {
+        color: #757575;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 20px;
+      }
+      &::after {
+        border-right: none;
+      }
+    }
+    // 设置二层menu item标题里的箭头样式
+    .ant-menu-submenu-title {
+      i.ant-menu-submenu-arrow::before {
+        background: #757575;
+      }
+      i.ant-menu-submenu-arrow::after {
+        background: #757575;
+      }
+    }
+
+    .ant-menu-submenu {
+      // 设置二层menu item里面除标题的文字样式
+      .ant-menu-item {
+        .ant-pro-menu-item {
+          color: rgba(0, 0, 0, 0.85);
+        }
+      }
+      &.ant-menu-submenu-selected {
+        &:not(.ant-menu-submenu-open) {
+          .ant-menu-submenu-title {
+            background-color: var(--menu-checked-bgc);
+            .ant-pro-menu-item {
+              color: white;
+            }
+            i.ant-menu-submenu-arrow::before {
+              background: white;
+            }
+            i.ant-menu-submenu-arrow::after {
+              background: white;
+            }
+          }
+        }
+      }
+      &:not(.ant-menu-submenu-selected) {
+        &.ant-menu-submenu-open {
+          .ant-menu-submenu-title {
+            background-color: #daddde;
+            &:hover {
+              background-color: #d0d3d4;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .ant-pro-sider-links {
+    .anticon-menu-fold {
+      color: #757575;
+    }
+    &:hover {
+      .anticon-menu-fold {
+        color: #757575;
+      }
+    }
+  }
+}
+
+.ant-layout-header {
+  height: 40px !important;
+  font-size: 12px;
+  line-height: 40px !important;
+  .ant-dropdown-trigger {
+    &:hover {
+      background-color: black;
+    }
+  }
+}

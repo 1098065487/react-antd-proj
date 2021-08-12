@@ -1,0 +1,44 @@
+.statistics {
+    display: flex;
+    justify-content: space-between;
+}
+.statistics-left,
+.statistics-right {
+    display: flex;
+    > div {
+        margin-right: 20px;
+        text-align: center;
+        padding: 20px;
+        background-color: white;
+        -webkit-box-shadow: 0 2px 8px rgba(0,0,0,.15);
+        box-shadow: 0 2px 8px rgba(0,0,0,.15);
+        .statistics-info {
+            &:nth-of-type(1) {
+                font-size: 22px;
+                margin-bottom: 20px;
+                font-weight: 700;
+                color: #000;
+            }
+            &:nth-of-type(2) {
+                font-size: 15px;
+            }
+        }
+    }
+}
+.statistics-right {
+    > div {
+        margin-right: 0;
+        > div {
+            display: inline-block;
+            border-right: 2px solid #ccc;
+            padding: 0 20px;
+            &:nth-of-type(1) {
+                padding-left: 0;
+            }
+            &:nth-of-type(3) {
+                border-right: none;
+                padding-right: 0;
+            }
+        }
+    }
+}

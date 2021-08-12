@@ -1,0 +1,95 @@
+.login_bg {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: url("../../assets/login-bg.jpg") center no-repeat;
+  background-size: cover;
+
+  .login_content {
+    position: absolute;
+    top: 23.8vh;
+    left: 32.29vw;
+    display: flex;
+    width: 41.67vw;
+    height: 43.52vh;
+    overflow: hidden;
+    background-color: #fff;
+    border: none;
+    border-radius: 14px;
+
+    .login_img {
+      width: 18.75vw;
+      height: 43.52vh;
+
+      img {
+        width: 18.75vw;
+        height: 43.52vh;
+      }
+    }
+
+    .login_form {
+      position: relative;
+      width: 22.92vw;
+      height: 43.52vh;
+      padding-top: 2vw;
+      @media (max-width: 1440px) {
+        padding-top: 1vw;
+      }
+
+      .title {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+
+        p {
+          margin: 0;
+          color: #000;
+          font-weight: 400;
+          font-size: 20px;
+        }
+      }
+
+      .form {
+        width: 16.6vw;
+        margin: 6vh auto 0;
+
+        :global {
+          .ant-input-prefix {
+            margin-right: 15px;
+          }
+
+          .ant-input-affix-wrapper {
+            font-size: 16px;
+          }
+
+          input {
+            font-size: 16px;
+          }
+
+          .ant-form-item-control-input-content {
+            border-bottom: 1px solid #979797;
+          }
+
+          .ant-form-item-has-error {
+            .ant-input-affix-wrapper {
+              box-shadow: none;
+            }
+          }
+        }
+      }
+
+      .company {
+        position: absolute;
+        bottom: 2vh;
+        width: 100%;
+        color: #000;
+        font-weight: 400;
+        font-size: 16px;
+        letter-spacing: 1px;
+        text-align: center;
+      }
+    }
+  }
+}

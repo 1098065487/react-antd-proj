@@ -1,0 +1,22 @@
+.thumbnail {
+  position: relative;
+  cursor: pointer;
+  .bigImg {
+    position: absolute;
+    top: 0;
+    left: 100px;
+    display: none;
+    z-index: 10;
+    max-width: 140px;
+    max-height: 140px;
+  }
+  &:hover {
+    .bigImg {
+      display: block;
+    }
+  }
+}
+
+.highLight {
+  background-color: #e6f7ff;
+}

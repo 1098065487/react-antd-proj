@@ -1,0 +1,55 @@
+kind: pipeline
+type: docker
+name: default
+
+steps:
+  - name: build
+    image: node:alpine
+    volumes:
+      - name: nodejs-data
+        path: /drone/src/node_modules
+    commands:
+      - npm install
+      - |
+        if [[ $DRONE_BRANCH = "master" ]]; then
+            export REACT_APP_ENV=production
+        else
+            export REACT_APP_ENV=develop
+        fi
+        npm run build
+    when:
+      branch:
+        - master
+        - develop
+
+  - name: deploy
+    image: zgolly/deploy
+    volumes:
+      - name: develop-key
+        path: /root/.ssh/deployer.id_rsa
+      - name: production-key
+        path: /root/.ssh/id_rsa
+    commands:
+      - set -ex
+      - |
+        if [[ $DRONE_BRANCH = "master" ]]; then
+            stage=production
+        else
+            stage=develop
+        fi
+        /app/deploy/bin/dep package $stage
+    when:
+      branch:
+        - master
+        - develop
+
+volumes:
+  - name: nodejs-data
+    host:
+      path: /home/service/storage/devops/nodejs/crm
+  - name: develop-key
+    host:
+      path: /home/service/storage/devops/deploy/.ssh/deployer.id_rsa
+  - name: production-key
+    host:
+      path: /home/admin/.ssh/id_rsa

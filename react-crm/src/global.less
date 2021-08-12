@@ -1,0 +1,151 @@
+@import '~antd/es/style/themes/default.less';
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+.colorWeak {
+  filter: invert(80%);
+}
+
+.ant-layout {
+  min-height: 100vh;
+}
+
+canvas {
+  display: block;
+}
+
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+@media (max-width: @screen-xs) {
+  .ant-table {
+    width: 100%;
+    overflow-x: auto;
+
+    &-thead > tr,
+    &-tbody > tr {
+      > th,
+      > td {
+        white-space: pre;
+
+        > span {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+// 兼容IE11
+@media screen and(-ms-high-contrast: active), (-ms-high-contrast: none) {
+  body .ant-design-pro > .ant-layout {
+    min-height: 100vh;
+  }
+}
+
+// 去除pageContainer 中pageHeader padding占位
+.blank_header {
+  :global {
+    .ant-page-header {
+      padding: 0;
+    }
+  }
+}
+
+// 自定义footer样式
+.ant-pro-global-footer {
+  margin: 24px 0 12px 0;
+}
+
+.custom_styles {
+  // 自定义菜单及header样式
+  .ant-menu {
+    &.ant-menu-dark {
+      background: #4065E0;
+    }
+  }
+
+  .ant-menu-dark {
+    .ant-menu-inline {
+      &.ant-menu-sub {
+        background: #4065E0;
+      }
+    }
+
+    &.ant-menu-dark {
+      &:not(.ant-menu-horizontal) {
+        .ant-menu-item-selected {
+          background-color: #3553BA;
+          border-left: 3px solid #19E5E6;
+        }
+      }
+    }
+
+    .ant-menu-item-selected {
+      & > a {
+        color: #19E5E6;
+      }
+
+      .anticon {
+        color: #19E5E6;
+
+        & + span {
+          color: #19E5E6;
+        }
+      }
+    }
+
+    .ant-menu-item {
+      &:hover {
+        & > a {
+          color: #19E5E6;
+        }
+      }
+    }
+
+    .ant-menu-submenu-selected {
+      color: #19E5E6;
+    }
+
+    .ant-menu-submenu-title {
+      &:hover {
+        color: #19E5E6;
+      }
+    }
+  }
+
+  // header自定义样式
+  .ant-pro-global-header-layout-mix {
+    padding: 0 16px 0 0;
+    background-color: #fff;
+
+    .ant-pro-global-header-logo {
+      min-width: 208px;
+      padding-left: 16px;
+      background-color: #4065E0;
+
+      a {
+        img {
+          height: 24px;
+        }
+      }
+    }
+
+    .anticon {
+      color: rgba(0, 0, 0, 0.65);
+    }
+  }
+}
+

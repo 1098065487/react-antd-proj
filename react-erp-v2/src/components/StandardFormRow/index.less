@@ -1,0 +1,144 @@
+@import '~antd/lib/style/themes/default.less';
+
+.standardFormRow {
+  display: flex;
+  padding: 5px 0;
+  font-size: 12px;
+  border-bottom: 1px dashed @border-color-split;
+
+  :global {
+    .ant-form-item {
+      margin-right: 24px;
+    }
+
+    .ant-form-item-label label {
+      margin-right: 0;
+      color: @text-color;
+      font-size: 12px;
+    }
+
+    .ant-form-item-label,
+    .ant-form-item-control {
+      padding: 0;
+      line-height: 32px;
+    }
+  }
+
+  .label {
+    flex: 0 0 auto;
+    margin-right: 24px;
+    color: @heading-color;
+    text-align: right;
+
+    & > span {
+      display: inline-block;
+      height: 32px;
+      line-height: 32px;
+
+      &::after {
+        content: '：';
+      }
+    }
+  }
+
+  .content {
+    flex: 1 1 0;
+
+    :global {
+      .ant-form-item:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+.standardFormRowFirst {
+  padding-top: 0;
+}
+
+.standardFormRowLast {
+  padding-bottom: 0;
+  border: none;
+}
+
+.standardFormRowBlock {
+  :global {
+    .ant-form-item,
+    div.ant-form-item-control-wrapper {
+      display: block;
+      .ant-input,
+      .ant-cascader-picker {
+        height: 26px;
+        font-size: 12px;
+      }
+      .ant-select {
+        font-size: 12px;
+      }
+      .ant-select .ant-select-selection--multiple {
+        min-height: 26px;
+        padding-bottom: 0;
+        .ant-select-selection__rendered {
+          margin-bottom: 0;
+          line-height: 26px;
+        }
+        .ant-select-selection__rendered > ul > li {
+          margin-top: 1px;
+        }
+      }
+      .ant-select .ant-select-selection--single {
+        height: 26px;
+        .ant-select-selection__rendered {
+          line-height: 26px;
+        }
+      }
+    }
+    .submitButtons {
+      .ant-btn {
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+.standardFormRowGrid {
+  :global {
+    .ant-form-item,
+    div.ant-form-item-control-wrapper {
+      display: block;
+      .ant-input,
+      .ant-cascader-picker {
+        height: 26px;
+        font-size: 12px;
+      }
+      .ant-select {
+        font-size: 12px;
+      }
+      .ant-select .ant-select-selection--multiple {
+        min-height: 26px;
+        padding-bottom: 0;
+        .ant-select-selection__rendered {
+          margin-bottom: 0;
+          line-height: 26px;
+        }
+        .ant-select-selection__rendered > ul > li {
+          margin-top: 1px;
+        }
+      }
+      .ant-select .ant-select-selection--single {
+        height: 26px;
+        .ant-select-selection__rendered {
+          line-height: 26px;
+        }
+      }
+    }
+    .submitButtons {
+      .ant-btn {
+        font-size: 12px;
+      }
+    }
+
+    .ant-form-item-label {
+      float: left;
+    }
+  }
+}
